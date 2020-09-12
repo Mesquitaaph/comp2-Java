@@ -1,0 +1,49 @@
+package programa3.figuras;
+
+import java.util.Scanner;
+
+// import java.awt.geom.Point2D;
+import programa3.plano.Coordenada2D;
+
+public class Circulo {
+  private double PI = Math.PI;
+
+  private double raio;
+  private Coordenada2D centro;
+
+  public Circulo(Coordenada2D centro) {
+    System.out.println("Circulo");
+    defineRaio();    
+    this.centro = centro;
+
+    System.out.printf("O perímetro do círculo é %.3f\n", calculaPerimetro());
+    System.out.printf("A área do círculo é %.3f\n", calculaArea());
+  }
+
+  private void defineRaio() {
+    Scanner scanner = new Scanner(System.in);
+    while(true) {
+      System.out.print("Digite o raio do círculo: ");
+      try {
+        this.raio = Double.parseDouble(scanner.nextLine());
+        break;
+      } catch(NumberFormatException e) {
+        System.out.println("Somente numeros são aceitos.\n");
+      }
+    }
+  }
+
+  public double calculaPerimetro() {
+    double perimetro = 2 * PI * raio;
+
+    return perimetro;
+  }
+
+  public double calculaArea() {
+    double area = PI * raio * raio;
+
+    System.out.println("A área do círculo é " + area);
+
+    return area;
+  }
+}

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"br.ufrj.dcc.comp2.ple.raphael.lista1.programa1.numeros"},{"l":"br.ufrj.dcc.comp2.ple.raphael.lista1.programa2.palavras"},{"l":"br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.figuras"},{"l":"br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano"}]

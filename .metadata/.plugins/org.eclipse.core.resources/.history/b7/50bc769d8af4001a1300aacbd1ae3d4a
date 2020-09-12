@@ -1,0 +1,71 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.figuras;
+
+import java.util.ArrayList;
+
+import br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano.Coordenada2D;
+
+/** Classe que representa um tri‚ngulo e seus aspectos.
+ * 
+ *	@author Raphael Mesquita &lt;raphafm.rf@gmail.com&gt;
+ */
+public class Triangulo {
+  private ArrayList<Coordenada2D> pontos = new ArrayList<>();
+
+  /**
+   * MÈtodo construtor. Imprime o perÌmetro e ·rea deste tri‚ngulo.
+   * @param A uma <code>Coordenada2D</code>
+   * @param B uma <code>Coordenada2D</code>
+   * @param C uma <code>Coordenada2D</code>
+   * @param D uma <code>Coordenada2D</code>
+   */
+  public Triangulo(Coordenada2D A, Coordenada2D B, Coordenada2D C) {
+    this.pontos.add(A);
+    this.pontos.add(B);
+    this.pontos.add(C);
+    
+    System.out.printf("O per√≠metro do tri√¢ngulo √© %.3f\n", calculaPerimetro());
+    System.out.printf("A √°rea do tri√¢ngulo √© %.3f\n", calculaArea());
+  }
+  
+  /**
+   * Sobrecarga do mÈtodo construtor. Imprime o perÌmetro e ·rea deste tri‚ngulo. 
+   * caso booleano seja verdadeiro.
+   * @param A uma <code>Coordenada2D</code>
+   * @param B uma <code>Coordenada2D</code>
+   * @param C uma <code>Coordenada2D</code>
+   * @param D uma <code>Coordenada2D</code>
+   * @param bool um <code>boolean</code>
+   */
+  public Triangulo(Coordenada2D A, Coordenada2D B, Coordenada2D C, boolean bool) {
+  	this.pontos.add(A);
+    this.pontos.add(B);
+    this.pontos.add(C);
+    
+    if(bool) {
+    	System.out.printf("O per√≠metro do tri√¢ngulo √© %.3f\n", calculaPerimetro());
+    	System.out.printf("A √°rea do tri√¢ngulo √© %.3f\n", calculaArea());
+    }
+  }
+
+  public double calculaPerimetro() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+
+    double perimetro = A.distancia(B) + B.distancia(C) + C.distancia(A);
+
+    return perimetro;
+  }
+
+  public double calculaArea() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+
+    double p = calculaPerimetro() / 2;
+
+    double area = Math.sqrt(p * (p - A.distancia(B)) * (p - B.distancia(C)) * (p - C.distancia(A)));
+
+    return area;
+  }
+}

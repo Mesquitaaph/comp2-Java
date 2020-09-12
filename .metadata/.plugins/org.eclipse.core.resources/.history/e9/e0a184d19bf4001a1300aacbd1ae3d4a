@@ -1,0 +1,99 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa1.numeros;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+/** Classe para calcular a média de números inteiros.
+ * 
+ * @author Raphael Mesquita &lt;raphafm.rf@gmail.com&gt;
+ */
+public class CalculaMedia {
+	static Scanner scanner = new Scanner(System.in);
+	
+  public static void main(String[] args) {
+    calculaMedia();
+  }
+
+  /**
+   * Imprime a média de numeros.
+   * <p>
+   * O método faz chamadas de outro método responsável por validar a entrada esperada do usuário:
+   * a primeira chamada retorna o tamanho da lista e as seguintes chamadas retornam um numero cada.
+   * Em seguida calcula e imprime a média dos números escolhidos pelo usuário.
+   * </p>
+   */
+  public static void calculaMedia() {
+    int tamanho = recebeNumero();
+
+    List<Double> numeros = new ArrayList<Double>();
+
+    double somaDosNumeros = 0;
+    
+    System.out.println("Digite os números da lista: ");
+    for(int i = 0; i < tamanho; i++) {
+      double numero = recebeNumero(numeros);
+      somaDosNumeros += numero;
+      numeros.add(numero);
+    }
+
+    double media = somaDosNumeros / tamanho;
+
+    System.out.println("A media dos numeros digitados é: " + media);
+  }
+
+  /**
+   * Recebe um inteiro digitado pelo usuário e o retorna.
+   * <p>
+   * Aguarda o usuário digitar na entrada padrão. Caso não seja um inteiro maior que zero,
+   * imprime uma mensagem de erro e aguarda uma nova entrada até a condição ser satisfeita.
+   * </p>
+   * @return O tamanho da lista
+   */
+  public static int recebeNumero() { 
+    while(true) {
+      System.out.print("Digite o tamanho da lista: ");
+
+      try {
+        int numero = scanner.nextInt();
+
+        if(numero < 1) {
+          System.out.println("Somente numero inteiro maior que zero permitido");
+          continue;
+        }
+
+        return numero;
+
+      } catch(InputMismatchException e) {
+        System.out.println("Somente numeros inteiros sao permitidos.");
+        scanner.nextLine();
+      }
+    }
+  }
+
+  /**
+   * Recebe um numero digitado pelo usuário e o retorna.
+   * <p>
+   * Aguarda o usuário digitar na entrada padrão. Caso não seja um numero,
+   * imprime uma mensagem de erro e aguarda uma nova entrada, até a condição ser satisfeita.
+   * </p>
+   * @param numeros uma <code>List&lt;Double&gt;</code> representando a lista dos números já digitados
+   * @return Um numero da lista
+   */
+  public static double recebeNumero(List<Double> numeros) {    
+    while(true) {
+
+      try {
+        double numero = scanner.nextDouble();
+
+        return numero;
+
+      } catch(InputMismatchException e) {
+        System.out.println("Somente numeros inteiros sao permitidos.");
+        scanner.nextLine();
+        for(double elemento: numeros) System.out.print(elemento+" ");
+      }
+    }
+  }
+}

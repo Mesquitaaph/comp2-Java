@@ -1,0 +1,55 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.figuras;
+
+import java.util.ArrayList;
+
+import br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano.Coordenada2D;
+
+public class Trapezio {
+  private ArrayList<Coordenada2D> pontos = new ArrayList<>();
+
+  public Trapezio(Coordenada2D A, Coordenada2D B, Coordenada2D C, Coordenada2D D) {
+    this.pontos.add(A);
+    this.pontos.add(B);
+    this.pontos.add(C);
+    this.pontos.add(D);
+
+    System.out.printf("O perímetro do trapézio é %.3f\n", calculaPerimetro());
+    System.out.printf("A área do trapézio é %.3f\n", calculaArea());
+  }
+
+  public static boolean ehTrapezio(Coordenada2D A, Coordenada2D B, Coordenada2D C, Coordenada2D D) {
+    if( (Coordenada2D.paralelos(A, B, C, D) && !Coordenada2D.paralelos(A, D, B, C)) ||
+        (!Coordenada2D.paralelos(A, B, C, D) && Coordenada2D.paralelos(A, D, B, C))
+      ) {
+        System.out.println("Trapezio");
+        return true;
+      }
+
+    return false;
+  }
+
+  public double calculaPerimetro() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+    Coordenada2D D = pontos.get(3);
+
+    double perimetro = A.distancia(B) + B.distancia(C) + C.distancia(D) + D.distancia(A);
+
+    return perimetro;
+  }
+
+  public double calculaArea() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+    Coordenada2D D = pontos.get(3);
+
+    Triangulo triangulo1 = new Triangulo(A, B, C);
+    Triangulo triangulo2 = new Triangulo(A, D, C);
+
+    double area = triangulo1.calculaArea() + triangulo2.calculaArea();
+
+    return area;
+  }
+}

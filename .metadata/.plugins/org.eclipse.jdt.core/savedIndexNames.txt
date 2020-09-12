@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\rapha\Documents\ComputaçãoEstudos\comp2-Java\.metadata\.plugins\org.eclipse.jdt.core
+2196199803.index
+3178718938.index
+4018625782.index

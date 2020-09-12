@@ -1,0 +1,68 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano;
+
+public class Coordenada2D {
+  private double x;
+  private double y;
+
+  public Coordenada2D() {}
+
+  public Coordenada2D(double x, double y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  public double distancia(Coordenada2D ponto) {
+    double dX = this.x - ponto.x;
+    double dY = this.y - ponto.y;
+    System.out.println(this.x + " "+this.y);
+    System.out.println(dX + " " + dY+"\n");
+    double dist = Math.hypot(dX, dY);
+    
+    return dist;
+  }
+
+  public static void ordenaVerticesQuadrilatero(Coordenada2D A, Coordenada2D B, Coordenada2D C, Coordenada2D D) {
+    Coordenada2D aux = new Coordenada2D();
+    if(intersecta(A, B, C, D)) {
+      System.out.println("ordenou1");
+      aux.setCoords(B);
+      B.setCoords(C);
+      C.setCoords(aux);
+    } else if (intersecta(A, D, B, C)) {
+    	System.out.println("ordeno2u");
+      aux.setCoords(D);
+      D.setCoords(C);
+      C.setCoords(aux);
+    }
+  }
+  
+  public static boolean intersecta(Coordenada2D r0, Coordenada2D r1, Coordenada2D s0, Coordenada2D s1) {
+    double det;
+
+    det = (s1.x - s0.x) * (r1.y - r0.y)  -  (s1.y - s0.y) * (r1.x - r0.x);
+    System.out.println(det);
+
+    return det != 0.0;
+  }
+
+  public static boolean perpendiculares(Coordenada2D A, Coordenada2D B, Coordenada2D C) {
+    Coordenada2D pA = new Coordenada2D(A.x - B.x, A.y - B.y);
+    Coordenada2D pB = new Coordenada2D(C.x - B.x, C.y - B.y);
+
+    double produtoEscalar = (pA.x * pB.x) + (pA.y * pB.y);
+
+    return produtoEscalar == 0.0;
+  }
+
+  public static boolean paralelos(Coordenada2D r0, Coordenada2D r1, Coordenada2D s0, Coordenada2D s1) {
+    double coef_r = (r1.y - r0.y) / (r1.x - r0.x);
+    double coef_s = (s1.y - s0.y) / (s1.x - s0.x);
+
+    return coef_r == coef_s;
+  }
+
+  public void setCoords(Coordenada2D coords) {
+    this.x = coords.x;
+    this.y = coords.y;
+  }
+}

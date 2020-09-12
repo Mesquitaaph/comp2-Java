@@ -1,0 +1,60 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.figuras;
+
+import java.util.Scanner;
+import br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano.Coordenada2D;
+
+/** Classe que representa um círculo
+ * 
+ *	@author Raphael Mesquita &lt;raphafm.rf@gmail.com&gt;
+ */
+public class Circulo {
+  private double PI = Math.PI;
+
+  private double raio;
+  private Coordenada2D centro;
+  
+  /**
+   * Método construtor. Pede ao usuário o tamanho do raio e imprime
+   * seu perímetro e sua área.
+   * @param centro um objeto da classe <code>Coordenada2D</code>
+   */
+  public Circulo(Coordenada2D centro) {
+    System.out.println("Circulo");
+    defineRaio();    
+    this.centro = centro;
+
+    System.out.printf("O perímetro círculo é %.3f\n", calculaPerimetro());
+    System.out.printf("A área do círculo é %.3f\n", calculaArea());
+  }
+
+  /**
+   * Método que define o raio do círculo.
+   * <p>
+   * 
+   * </p>
+   */
+  private void defineRaio() {
+    Scanner scanner = new Scanner(System.in);
+    while(true) {
+      System.out.print("Digite o raio do círculo: ");
+      try {
+        this.raio = Double.parseDouble(scanner.nextLine());
+        break;
+      } catch(NumberFormatException e) {
+        System.out.println("Somente numeros sÃ£o aceitos.\n");
+      }
+    }
+  }
+
+  public double calculaPerimetro() {
+    double perimetro = 2 * PI * raio;
+
+    return perimetro;
+  }
+
+  public double calculaArea() {
+    double area = PI * raio * raio;
+
+    return area;
+  }
+}

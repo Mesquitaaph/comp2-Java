@@ -1,0 +1,56 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.figuras;
+
+import java.util.ArrayList;
+
+import br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano.Coordenada2D;
+
+/** Classe que representa um retângulo e seus aspectos.
+ * 
+ *	@author Raphael Mesquita &lt;raphafm.rf@gmail.com&gt;
+ */
+public class Retangulo {
+  private ArrayList<Coordenada2D> pontos = new ArrayList<>();
+
+  public Retangulo(Coordenada2D A, Coordenada2D B, Coordenada2D C, Coordenada2D D) {
+	System.out.println("Retângulo");
+	
+    this.pontos.add(A);
+    this.pontos.add(B);
+    this.pontos.add(C);
+    this.pontos.add(D);
+
+    System.out.printf("O perímetro do retângulo é %.3f\n", calculaPerimetro());
+    System.out.printf("A área do retângulo é %.3f\n", calculaArea());
+  }
+
+  public static boolean ehRetangulo(Coordenada2D A, Coordenada2D B, Coordenada2D C, Coordenada2D D) {
+    if( Coordenada2D.perpendiculares(D, A, B) && Coordenada2D.perpendiculares(A, B, C) &&
+        Coordenada2D.perpendiculares(B, C, D) && Coordenada2D.perpendiculares(C, D, A)
+      ) {
+        return true;
+      }
+
+    return false;
+  }
+
+  public double calculaPerimetro() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+    Coordenada2D D = pontos.get(3);
+
+    double perimetro = A.distancia(B) + B.distancia(C) + C.distancia(D) + D.distancia(A);
+
+    return perimetro;
+  }
+
+  public double calculaArea() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+
+    double area = B.distancia(A) * B.distancia(C);
+
+    return area;
+  }
+}

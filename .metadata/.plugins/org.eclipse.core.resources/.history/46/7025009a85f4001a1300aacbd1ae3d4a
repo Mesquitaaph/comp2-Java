@@ -1,0 +1,51 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.figuras;
+
+import java.util.ArrayList;
+
+import br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano.Coordenada2D;
+
+public class Triangulo {
+  private ArrayList<Coordenada2D> pontos = new ArrayList<>();
+
+  public Triangulo(Coordenada2D A, Coordenada2D B, Coordenada2D C) {
+    this.pontos.add(A);
+    this.pontos.add(B);
+    this.pontos.add(C);
+    
+    System.out.printf("O perímetro do triângulo é %.3f\n", calculaPerimetro());
+    System.out.printf("A área do triângulo é %.3f\n", calculaArea());
+  }
+  
+  public Triangulo(Coordenada2D A, Coordenada2D B, Coordenada2D C, boolean bool) {
+  	this.pontos.add(A);
+    this.pontos.add(B);
+    this.pontos.add(C);
+    
+    if(bool) {
+    	System.out.printf("O perímetro do triângulo é %.3f\n", calculaPerimetro());
+    	System.out.printf("A área do triângulo é %.3f\n", calculaArea());
+    }
+  }
+
+  public double calculaPerimetro() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+
+    double perimetro = A.distancia(B) + B.distancia(C) + C.distancia(A);
+
+    return perimetro;
+  }
+
+  public double calculaArea() {
+    Coordenada2D A = pontos.get(0);
+    Coordenada2D B = pontos.get(1);
+    Coordenada2D C = pontos.get(2);
+
+    double p = calculaPerimetro() / 2;
+
+    double area = Math.sqrt(p * (p - A.distancia(B)) * (p - B.distancia(C)) * (p - C.distancia(A)));
+
+    return area;
+  }
+}

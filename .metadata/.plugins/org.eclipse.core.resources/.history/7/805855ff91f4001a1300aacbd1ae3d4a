@@ -1,0 +1,96 @@
+package br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.figuras;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import br.ufrj.dcc.comp2.ple.raphael.lista1.programa3.plano.Ponto2D;
+
+/** Classe principal do pacote. Recebe os pontos e imprime a figura.
+ * 
+ *	@author Raphael Mesquita &lt;raphafm.rf@gmail.com&gt;
+ */
+public class Figuras {
+  public static void main(String[] args) {
+    mostraFigura();
+  }
+
+  /**
+   * Método responsável por receber da entrada padrão uma sequência de coordenadas e mostrar a figura formada pelos pontos definidos.
+   * <p>
+   * Pede ao usuário coordenadas dos vértices da figura. Caso não seja uma quantidade par ou tenha algum valor inválido,
+   * pede novamente até as condições serem satisfeitas. ATENÇÃO: no caso de um quadrilátero, as coordenadas devem ser passadas ordenadamente, 
+   * de forma que os pontos, no plano cartesiano, tenham uma orientação válida e seus lados não se interceptem.
+   * </p>
+   * <p>
+   * O método, então, divide em pares os valores passados e transforma numa lista de pontos <code>ArrayList&lt;Ponto2D&gt;</code> 
+   * e a passa como parâmetro para outro método reponsável por identificar a figura;
+   * </p>
+   */
+  public static void mostraFigura() {
+    Scanner scanner = new Scanner(System.in);
+    
+    while(true) {
+      System.out.println("Digite abaixo as coordenadas dos vértices da figura(ou do centro, caso seja um círculo) no sentido horário ou anti-horário:");
+      String entrada[] = scanner.nextLine().split(" ");
+  
+      int tamanho = entrada.length;
+  
+      double coordenadas[] = new double[tamanho];
+      try {
+        for(int i = 0; i < tamanho; i++) coordenadas[i] = Double.parseDouble(entrada[i]);
+        
+        ArrayList<Ponto2D> pontos = new ArrayList<>();
+        for(int i = 0; i < tamanho; i += 2) {
+          pontos.add(new Ponto2D(coordenadas[i], coordenadas[i+1]));
+        }
+
+        if(identificaFigura(tamanho, pontos)) break;
+
+      } catch(NumberFormatException e) {
+        System.out.println("Coordenadas inválidas.\n");
+      }
+    }
+
+    scanner.close();
+  }
+
+  /**
+   * 
+   * @param tamanho
+   * @param pontos
+   * @return
+   */
+  public static boolean identificaFigura(ArrayList<Ponto2D> pontos) {
+    switch(pontos.size()) {
+      case 2:
+        Circulo circulo = new Circulo(pontos.get(0));
+        break;
+      case 6:
+        Triangulo triangulo = new Triangulo(pontos.get(0), pontos.get(1), pontos.get(2));
+        break;
+      case 8:
+        //Coordenada2D.ordenaVerticesQuadrilatero(pontos.get(0), pontos.get(1), pontos.get(2), pontos.get(3));
+        validaQuadrilatero(pontos);
+        break;
+      default:
+        System.out.println("Figura indisponível.\n");
+        return false;
+    }
+    return true;
+  }
+
+  public static void validaQuadrilatero(ArrayList<Ponto2D> pontos) {
+    Ponto2D A = pontos.get(0); 
+    Ponto2D B = pontos.get(1); 
+    Ponto2D C = pontos.get(2); 
+    Ponto2D D = pontos.get(3);
+
+    if(Retangulo.ehRetangulo(A, B, C, D)) {
+      Retangulo retangulo = new Retangulo(A, B, C, D);
+    } else if (Trapezio.ehTrapezio(A, B, C, D)) {
+      Trapezio trapezio = new Trapezio(A, B, C, D);      
+    } else {
+      System.out.println("Quadrilátero indisponível.\n");
+    }
+  }
+}
