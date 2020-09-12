@@ -1,3 +1,5 @@
+# Questionario
+
 1 - Considerei o último programa o mais dificil de se fazer. Acho que optei pelo caminho mais dificil de se fazer isso, pois quis que o programa identificasse sozinho qual figura foi passada através das coordenadas passadas. Identificar os quadriláteros foi o mais difícil, pois não tinha jeitos fáceis de se fazer. Também achei um pouco complicado me organizar com tantas classes no programa.
 
 2 - Na verdade usei os métodos scanner.nextInt() e scanner.nextDouble(). O primeiro para receber o tamanho da lista e o segundo para receber cada um dos numeros da lista. As exceções possíveis de ocorrer, especificamente neste programa, é somente a InputMismatchException.
