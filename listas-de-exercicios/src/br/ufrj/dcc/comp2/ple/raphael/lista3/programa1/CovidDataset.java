@@ -298,7 +298,7 @@ public class CovidDataset {
 	 * @throws IOException Caso dê problema ao abrir ou fechar o caso.csv.gz.
 	 */
 	private static BufferedReader getDatasetBuffer() throws FileNotFoundException, SecurityException, IOException {
-		File arq = new File("resources/caso.csv.gz");
+		File arq = new File("resources"+File.separator+"caso.csv.gz");
 		FileInputStream fis = new FileInputStream(arq);
 		GZIPInputStream zip = new GZIPInputStream(fis);
 		InputStreamReader reader = new InputStreamReader(zip);

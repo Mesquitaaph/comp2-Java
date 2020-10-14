@@ -120,7 +120,7 @@ public class GraficoWeb {
 	 * @throws FileNotFoundException Caso o arquivo template_grafico.html não seja econtrado.
 	 */
 	private BufferedReader getTemplateBuffer() throws FileNotFoundException {
-		File arq = new File("resources/template_grafico.html");
+		File arq = new File("resources"+File.separator+"template_grafico.html");
 		
 		FileInputStream fis = new FileInputStream(arq);
 		InputStreamReader reader = new InputStreamReader(fis);

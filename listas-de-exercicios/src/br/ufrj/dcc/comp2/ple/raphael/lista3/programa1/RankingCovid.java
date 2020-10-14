@@ -54,7 +54,7 @@ public class RankingCovid {
 	 * @param cidadesList A <b>ArrayList&lt;List&lt;String&gt;&gt;</b> contendo a lista das últimas medições de cada cidade.
 	 */
 	private void geraArquivoRanking(String nomeDoArquivo, int colunaIndex, ArrayList<List<String>> cidadesList) {
-		try(PrintStream out = new PrintStream(new FileOutputStream("resources/"+nomeDoArquivo+".tsv"))) {
+		try(PrintStream out = new PrintStream(new FileOutputStream("resources"+File.separator+nomeDoArquivo+".tsv"))) {
 			
 			ArrayList<List<String>> cidadesUltimaMedicaoList = new ArrayList<>();
 			for(List<String> linha: cidadesList) {
