@@ -24,7 +24,7 @@
 
 3 - Diagrama de sequência para o caso da tentativa de empréstimo de um livro cujos exemplares estão esgotados.</p>
 
-<img src="https://github.com/Riukkon/comp2-Java/blob/master/listas-de-exercicios/src/br/ufrj/dcc/comp2/ple/raphael/lista4/Diagrama de sequencia.png"/>
+<img src="https://github.com/Riukkon/comp2-Java/blob/master/listas-de-exercicios/src/br/ufrj/dcc/comp2/ple/raphael/lista4/Diagram de sequencia.png"/>
 <br>
 
 4 - Como não tive muitas informações sobre como os pontos foram atribuídos inicialmente e não pude confirmar se os que já tinham eram um sistema de <i>rating</i>, pensei em utilizar os pontos dos estudantes como uma forma de dar preferência na fila de empréstimos. Mas não acho que seria justo com os estudantes que acabaram de se cadastrar no sistema da biblioteca. Então pensei numa solução simples que abrange estudantes e livros:
