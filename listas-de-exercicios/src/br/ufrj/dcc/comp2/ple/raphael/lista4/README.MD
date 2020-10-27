@@ -3,8 +3,11 @@
 1 - Acredito que minha maior dificuldade foi aplicar os padrões de projeto. Já apliquei o <b>MVC</b> ou semelhante em outros projetos, mas mesmo assim não foi algo tão intuitivo quanto pensei que seria. No entanto, depois que finalizei a parte <i>model</i> fluiu melhor.
 </p>
 <p>Ainda nos padrões de projeto, foi difícil achar um segundo padrão que fosse realmente servir para algo no programa. Acabei utilizando o padrão comportamental <b>Observer</b> na parte de emprestar livros à estudantes na fila de empréstimos.</p>
-<div>Outra dificuldade foi para tornar o programa escalável, mas especificamente com relação ao formato do dataset:<br>
-Um <i>.tsv</i> não permite modificações tão facilmente. Para alterar um registro no dataset era preciso ler e escrever o arquivo inteiro. Mas para uma quantidade de registros que pode facilmente ficar muito grande, como o dataset de empréstimos, pode pesar muito na memória do computador. Pensei em algumas soluções, apesar de não aplicá-las:
+<div>
+  <p>
+      Outra dificuldade foi para tornar o programa escalável, mais especificamente com relação ao formato do dataset:</br>
+      Um <i>.tsv</i> não permite modificações tão facilmente. Para alterar um registro no dataset era preciso ler e escrever o arquivo inteiro. Mas para uma quantidade de             registros que pode facilmente ficar muito grande, como o dataset de empréstimos, pode pesar muito na memória do computador. Pensei em algumas soluções, apesar de não            aplicá-las:
+  </p>
   <ul>
     <li>
       Criar um arquivo temporário e concatenar, nele, as linhas lidas do dataset a fim lê-lo e escrever no arquivo original, modificando o necessário;
